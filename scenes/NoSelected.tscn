@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://2sr8r8obq51h"]
+
+[ext_resource type="Texture2D" uid="uid://dxhfcy44ns1ec" path="res://art/häh.png" id="1_udusn"]
+[ext_resource type="Script" path="res://scenes/NoSelected.gd" id="2_8a65a"]
+[ext_resource type="Texture2D" uid="uid://dmmu2o075ibwh" path="res://art/hävisit.png" id="3_m7d20"]
+[ext_resource type="Script" path="res://ClickableArea2D.gd" id="4_c14mu"]
+
+[node name="NoSelected" type="TextureRect"]
+mouse_filter = 2
+texture = ExtResource("1_udusn")
+script = ExtResource("2_8a65a")
+
+[node name="YouLost" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("3_m7d20")
+
+[node name="Again" type="Area2D" parent="YouLost"]
+script = ExtResource("4_c14mu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YouLost/Again"]
+polygon = PackedVector2Array(501, 463, 561, 458, 629, 450, 704, 451, 788, 468, 812, 499, 806, 538, 764, 554, 668, 558, 621, 554, 578, 540, 508, 536, 461, 515, 451, 486)
+
+[connection signal="clicked" from="YouLost/Again" to="." method="_on_again_clicked"]

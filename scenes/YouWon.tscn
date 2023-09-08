@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxmdpyuoy4igs"]
+
+[ext_resource type="Texture2D" uid="uid://b4q5n8ymcgn70" path="res://art/voitit.png" id="1_53thb"]
+[ext_resource type="Script" path="res://scenes/YouWon.gd" id="2_3bgjn"]
+[ext_resource type="Script" path="res://ClickableArea2D.gd" id="2_w8ws3"]
+
+[node name="YouWon" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_53thb")
+script = ExtResource("2_3bgjn")
+
+[node name="Again" type="Area2D" parent="."]
+script = ExtResource("2_w8ws3")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="Again"]
+polygon = PackedVector2Array(488, 460, 550, 460, 599, 454, 667, 454, 732, 462, 790, 478, 808, 503, 803, 526, 770, 546, 686, 559, 623, 558, 566, 546, 529, 535, 487, 534, 458, 515, 450, 494, 461, 473)
+
+[connection signal="clicked" from="Again" to="." method="_on_again_clicked"]

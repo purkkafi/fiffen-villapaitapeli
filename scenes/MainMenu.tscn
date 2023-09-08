@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://vums431jji5y"]
+
+[ext_resource type="Texture2D" uid="uid://bgdf0mg1j886t" path="res://art/aloita.png" id="1_50ygo"]
+[ext_resource type="Script" path="res://scenes/MainMenu.gd" id="2_0kvru"]
+[ext_resource type="Script" path="res://ClickableArea2D.gd" id="3_ohg8v"]
+
+[node name="MainMenu" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_50ygo")
+script = ExtResource("2_0kvru")
+
+[node name="Start" type="Area2D" parent="."]
+script = ExtResource("3_ohg8v")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Start"]
+polygon = PackedVector2Array(541, 328, 629, 312, 741, 302, 790, 320, 797, 382, 732, 398, 676, 404, 611, 408, 546, 423, 515, 410, 527, 372)
+
+[connection signal="area_entered" from="Start" to="." method="_on_start_button_area_entered"]
+[connection signal="clicked" from="Start" to="." method="_on_start_button_clicked"]

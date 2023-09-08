@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://jh7xcr48il5k"]
+
+[ext_resource type="Texture2D" uid="uid://bjuj5swrqjc53" path="res://art/pue.png" id="1_rby4k"]
+[ext_resource type="Script" path="res://scenes/Choice.gd" id="2_88hmx"]
+[ext_resource type="Script" path="res://ClickableArea2D.gd" id="3_3oice"]
+
+[node name="Choice" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_rby4k")
+script = ExtResource("2_88hmx")
+
+[node name="No" type="Area2D" parent="."]
+script = ExtResource("3_3oice")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="No"]
+polygon = PackedVector2Array(610, 229, 635, 212, 676, 202, 712, 208, 737, 231, 740, 259, 720, 272, 686, 281, 641, 282, 620, 270, 608, 253)
+
+[node name="Yes" type="Area2D" parent="."]
+script = ExtResource("3_3oice")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Yes"]
+polygon = PackedVector2Array(668, 397, 717, 396, 743, 413, 757, 442, 752, 467, 725, 480, 690, 487, 643, 487, 626, 477, 612, 462, 606, 442, 634, 413)
+
+[connection signal="clicked" from="No" to="." method="_on_no_clicked"]
+[connection signal="clicked" from="Yes" to="." method="_on_yes_clicked"]
